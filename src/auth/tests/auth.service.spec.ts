@@ -12,12 +12,7 @@ describe('AuthService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
-        {
-          provide: JwtService,
-          useValue: {
-            sign: vi.fn().mockReturnValue('mock_jwt_token')
-          }
-        }
+        JwtService
       ]
     }).compile();
 
