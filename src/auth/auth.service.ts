@@ -9,7 +9,7 @@ export interface User {
 
 @Injectable()
 export class AuthService {
-  constructor(private jwtService: JwtService) {}
+  constructor(private readonly jwtService: JwtService) {}
 
   async login(username: string, password: string): Promise<{ access_token: string }> {
     // Mock user validation (replace with actual user repository/service logic)
