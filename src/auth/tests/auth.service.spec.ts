@@ -26,10 +26,15 @@ describe('AuthService', () => {
   });
 
   it('should successfully login with correct credentials', async () => {
+    const jwtSpy = vi.spyOn(jwtService, 'sign');
     const result = await authService.login('testuser', 'correctpassword');
     
     expect(result).toHaveProperty('access_token');
     expect(result.access_token).toBe('mock_jwt_token');
+    expect(jwtSpy).toHaveBeenCalledWith({
+      sub: 1,
+      username: 'testuser'
+    });
   });
 
   it('should throw UnauthorizedException for incorrect username', async () => {
