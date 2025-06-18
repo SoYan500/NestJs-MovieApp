@@ -15,7 +15,7 @@ describe('AuthService', () => {
         {
           provide: JwtService,
           useValue: {
-            sign: (payload) => 'mock_jwt_token'
+            sign: vi.fn().mockReturnValue('mock_jwt_token')
           }
         }
       ]
