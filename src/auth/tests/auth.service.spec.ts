@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from '../auth.service';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedException } from '@nestjs/common';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -9,7 +10,7 @@ describe('AuthService', () => {
 
   beforeEach(async () => {
     jwtService = {
-      sign: jest.fn().mockReturnValue('mock_jwt_token')
+      sign: vi.fn().mockReturnValue('mock_jwt_token')
     } as any;
 
     authService = new AuthService(jwtService);
